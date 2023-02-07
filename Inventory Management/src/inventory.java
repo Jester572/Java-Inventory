@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import java.util.ArrayList;
 
 public class inventory {
     public static void main(String[] args) {
@@ -8,8 +8,8 @@ public class inventory {
         int selection;
         int choice;
         Scanner input = new Scanner(System.in);
-        Products[] itemInventory = new Products[100];
-        Software[] softwareInventory = new Software[100];
+        ArrayList<Products> itemInventory = new ArrayList<Products>();
+       ArrayList<Software> softwareInventory = new ArrayList<Software>();
 
 
 //        new Item("compute",52);
@@ -27,24 +27,25 @@ public class inventory {
                 choice = input.nextInt();
 
                 if (choice == 1) {
-                    for (int i = 0; i < Products.productCounter; i++) {
-                        System.out.println("ID: " + itemInventory[i].getProductId() + "   name: " + itemInventory[i].getName() + "   Quantity: " + itemInventory[i].getQuantity());
+                    for (Products pr : itemInventory) {
+                        System.out.println("ID: " + pr.getProductId() + "   name: " + pr.getName() + "   Quantity: " + pr.getQuantity());
 
                     }
 
                 } else if (choice == 2) {
-                    for (int i = 0; i < Software.softwareCounter; i++) {
-                        System.out.println("ID: " + softwareInventory[i].getSoftwareId() + "   name: " + softwareInventory[i].getName() + "   Quantity: " + softwareInventory[i].getQuantity() + "   Length: " + softwareInventory[i].getLength());
+                    for (Software sw : softwareInventory) {
+                        System.out.println("ID: " + sw.getSoftwareId() + "   name: " + sw.getName() + "   Quantity: " + sw.getQuantity() + "   Length: " + sw.getLength());
                     }
                 } else if (choice == 3) {
                     System.out.println("Items");
-                    for (int i = 0; i < Products.productCounter; i++) {
-                        System.out.println("ID: " + itemInventory[i].getProductId() + "   name: " + itemInventory[i].getName() + "   Quantity: " + itemInventory[i].getQuantity());
+                    for (Products pr : itemInventory) {
+                        System.out.println("ID: " + pr.getProductId() + "   name: " + pr.getName() + "   Quantity: " + pr.getQuantity());
+
                     }
                     System.out.println("------------------------------------------------");
                     System.out.println("Software");
-                    for (int i = 0; i < Software.softwareCounter; i++) {
-                        System.out.println("ID: " + softwareInventory[i].getSoftwareId() + "   name: " + softwareInventory[i].getName() + "   Quantity: " + softwareInventory[i].getQuantity() + "   Length: " + softwareInventory[i].getLength());
+                    for (Software sw : softwareInventory) {
+                        System.out.println("ID: " + sw.getSoftwareId() + "   name: " + sw.getName() + "   Quantity: " + sw.getQuantity() + "   Length: " + sw.getLength());
                     }
 
                 } else if (choice == 4) {
@@ -68,20 +69,16 @@ public class inventory {
                     choice = input.nextInt();
 
                     if (choice == 1) {
-                        while (itemInventory[check] != null) {
-                            check++;
-                        }
+
+
                         System.out.print("Please enter the item name");
                         String name = input.next();
                         System.out.println("Please enter the quantity");
                         int quantity = input.nextInt();
-                        itemInventory[check] = new Products(name, quantity);
+                        itemInventory.add(new Products(name, quantity));
 
 
                     } else if (choice == 2) {
-                        while (softwareInventory[check] != null) {
-                            check++;
-                        }
 
                         System.out.print("Please enter the Software name");
                         String name = input.next();
@@ -89,7 +86,7 @@ public class inventory {
                         int quantity = input.nextInt();
                         System.out.println("Please enter the length of licence in months");
                         int duration = input.nextInt();
-                        softwareInventory[check] = new Software(name,quantity,duration);
+                        softwareInventory.add(new Software(name,quantity,duration));
 
                     } else if (choice == 3) {
                         selection = 0;
@@ -119,32 +116,32 @@ public class inventory {
                 System.out.println("3: Back");
                 choice = input.nextInt();
                 if (choice == 1) {
-                    for (int i = 0; i < Products.productCounter; i++) {
-                        System.out.println("ID: " + itemInventory[i].getProductId() + "   name: " + itemInventory[i].getName() + "   Quantity: " + itemInventory[i].getQuantity());
+                    for (Products pr : itemInventory) {
+                        System.out.println("ID: " + pr.getProductId() + "   name: " + pr.getName() + "   Quantity: " + pr.getQuantity());
                     }
                     System.out.println("");
                     System.out.println("select an ID number to change");
                     int changeId = input.nextInt();
-                    for (int i = 0; i < Products.productCounter; i++) {
-                        if (itemInventory[i].getProductId() == changeId) {
-                            System.out.println("How many of " + itemInventory[i].getName() + " are you changing it to?");
+                    for (Products pr : itemInventory) {
+                        if (pr.getProductId() == changeId) {
+                            System.out.println("How many of " + pr.getName() + " are you changing it to?");
                             int newQuantity = input.nextInt();
-                            itemInventory[i].setQuantity(newQuantity);
+                            pr.setQuantity(newQuantity);
                             break;
                         }
                     }
                 } else if (choice == 2) {
-                    for (int i = 0; i < Software.softwareCounter; i++) {
-                        System.out.println("ID: " + softwareInventory[i].getSoftwareId() + "   name: " + softwareInventory[i].getName() + "   Quantity: " + softwareInventory[i].getQuantity() + "Length: " + softwareInventory[i].getLength());
+                    for (Software sw : softwareInventory) {
+                        System.out.println("ID: " + sw.getSoftwareId() + "   name: " + sw.getName() + "   Quantity: " + sw.getQuantity() + "Length: " + sw.getLength());
                     }
                     System.out.println("");
                     System.out.println("select an ID number to change");
                     int changeId = input.nextInt();
-                    for (int i = 0; i < Software.softwareCounter; i++) {
-                        if (softwareInventory[i].getSoftwareId() == changeId) {
-                            System.out.println("How many of " + softwareInventory[i].getName() + " are you changing it to?");
+                    for (Software sw : softwareInventory) {
+                        if (sw.getSoftwareId() == changeId) {
+                            System.out.println("How many of " + sw.getName() + " are you changing it to?");
                             int newQuantity = input.nextInt();
-                            softwareInventory[i].setQuantity(newQuantity);
+                            sw.setQuantity(newQuantity);
                             break;
                         }
                     }
