@@ -1,3 +1,4 @@
+//child class
 public class Software extends Item {
     public int length;
     private int softwareId;
@@ -8,6 +9,7 @@ public class Software extends Item {
         length = monthsActive;
 
     }
+    //getters
 
     public int getLength() {
         return length;

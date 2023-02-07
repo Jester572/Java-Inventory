@@ -1,20 +1,21 @@
+//Libraries
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class inventory {
     public static void main(String[] args) {
+        //variables
         boolean running = true;
         boolean valid = true;
         int selection;
         int choice;
         Scanner input = new Scanner(System.in);
+
+        //Two main lists
         ArrayList<Products> itemInventory = new ArrayList<Products>();
-       ArrayList<Software> softwareInventory = new ArrayList<Software>();
+        ArrayList<Software> softwareInventory = new ArrayList<Software>();
 
-
-//        new Item("compute",52);
-//        Item id3 = new Item("computs",52);
-//        Software s1 = new Software("google", 2, 3);
+       //Main loop
         while (running) {
             selection = mainMenu();
             while (selection == 1) {
@@ -25,17 +26,18 @@ public class inventory {
                 System.out.println("4: Back");
 
                 choice = input.nextInt();
-
+                //view only items
                 if (choice == 1) {
                     for (Products pr : itemInventory) {
                         System.out.println("ID: " + pr.getProductId() + "   name: " + pr.getName() + "   Quantity: " + pr.getQuantity());
 
                     }
-
+                //view only software
                 } else if (choice == 2) {
                     for (Software sw : softwareInventory) {
                         System.out.println("ID: " + sw.getSoftwareId() + "   name: " + sw.getName() + "   Quantity: " + sw.getQuantity() + "   Length: " + sw.getLength());
                     }
+                //view items and software
                 } else if (choice == 3) {
                     System.out.println("Items");
                     for (Products pr : itemInventory) {
@@ -56,6 +58,7 @@ public class inventory {
 
 
             }
+            //loop for creating an item or software
             while (selection == 2) {
                 boolean another = true;
 
@@ -68,6 +71,7 @@ public class inventory {
                     System.out.println("3: Back");
                     choice = input.nextInt();
 
+                    //Adds an item
                     if (choice == 1) {
 
 
@@ -77,7 +81,7 @@ public class inventory {
                         int quantity = input.nextInt();
                         itemInventory.add(new Products(name, quantity));
 
-
+                    //Add software
                     } else if (choice == 2) {
 
                         System.out.print("Please enter the Software name");
@@ -92,7 +96,7 @@ public class inventory {
                         selection = 0;
                         break;
 
-
+                    //Repeats if you want to add another
                     } else {
                         System.out.println("Please choose a valid selection");
                     }
@@ -110,11 +114,14 @@ public class inventory {
                 }
 
             }
+            //updates item quantities using the ID number
             while (selection == 3) {
                 System.out.println("1: Update Item Quantity");
                 System.out.println("2: Update Software Quantity");
                 System.out.println("3: Back");
                 choice = input.nextInt();
+
+                //Changes item inventory
                 if (choice == 1) {
                     for (Products pr : itemInventory) {
                         System.out.println("ID: " + pr.getProductId() + "   name: " + pr.getName() + "   Quantity: " + pr.getQuantity());
@@ -130,6 +137,7 @@ public class inventory {
                             break;
                         }
                     }
+                    //Changes software inventory
                 } else if (choice == 2) {
                     for (Software sw : softwareInventory) {
                         System.out.println("ID: " + sw.getSoftwareId() + "   name: " + sw.getName() + "   Quantity: " + sw.getQuantity() + "Length: " + sw.getLength());
@@ -167,6 +175,7 @@ public class inventory {
 
 
     }
+    //Creates a main menu
     static int mainMenu() {
         Scanner input = new Scanner(System.in);
         System.out.println("Select from the menu by typing the associated number");

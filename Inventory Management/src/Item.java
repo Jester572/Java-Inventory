@@ -1,3 +1,4 @@
+//Parent class
 public class Item {
     int quantity;
     String name;
@@ -6,10 +7,7 @@ public class Item {
         name = iName;
         quantity = iQuantity;
     }
-    void addItem () {
-
-    }
-
+//getters and setters
     public int getQuantity() {
         return quantity;
     }

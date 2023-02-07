@@ -1,3 +1,4 @@
+//child class
 public class Products extends Item{
     private int productId;
     public static int productCounter = 0;
@@ -6,6 +7,7 @@ public class Products extends Item{
         this.productId = productCounter++;
     }
 
+    //getters
     public int getProductId() {
         return productId;
     }
