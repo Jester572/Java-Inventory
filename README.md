@@ -6,9 +6,9 @@ This software creates a basic inventory system. Although it does not have the ca
 
 I wrote this program becasue I wanted to try my hand at object oriented programming. I found that this program helped me understand the importance of Classes and subclasses and how they work together.
 
-{Provide a link to your YouTube demonstration. It should be a 4-5 minute demo of the software running and a walkthrough of the code. Focus should be on sharing what you learned about the language syntax.}
 
-[Software Demo Video](http://youtube.link.goes.here)
+
+[Software Demo Video](https://youtu.be/x0bcIoE8kBk)
 
 # Development Environment
 
